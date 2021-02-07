@@ -121,13 +121,13 @@ class Console(object):
        
         
 if __name__ == "__main__":
-     screen  =  Console(16*9,16*2+3);
+     screen  =  Console(16*8,16*2);
     
      screen.x+=5;
      direction = 0;
      xPos      = 0;
-     period    = 16*9;
-     k         = 4;
+     period    = 4*10;
+     k         = 2;
      freq      = k *( 2 * math.pi) / period;
      
      while(True):
@@ -135,10 +135,10 @@ if __name__ == "__main__":
          c = 0;
          c     += complex(math.cos(freq * xPos),math.sin(freq * xPos));
          c  =  c / abs(c);
-         yPos  =  int(round(((c.imag * 0.5)+ 0.5),4) * screen.height*0.8) 
-         screen.add_pixel(Pixel(screen.x+ xPos,screen.y + yPos));
+         yPos  =  ((c.imag * 0.5)+ 0.5) * screen.height * 0.8
+         screen.add_pixel(Pixel(int(screen.x+ xPos),int(screen.y + yPos)+1));
          screen.draw();
-         time.sleep(0.09);
+         time.sleep(0.15);
          
        
              
